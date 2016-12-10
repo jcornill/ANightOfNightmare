@@ -19,6 +19,7 @@ using UnityEngine;
 	public class EventManager 
 	{
 		public const string EVENT_MANAGER_INIT = "EManInit";
+		public const string EVENT_PLAYER_MOVE = "EPlayerMove";
 
 		public Dictionary<string, List<IObserver>> eventMap { get; private set; }
 

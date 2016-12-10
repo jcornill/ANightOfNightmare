@@ -19,9 +19,9 @@ public class Tile : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		pos = new Vector2 (transform.localPosition.x, transform.localPosition.y);
+		pos = new Vector2 (transform.position.x, transform.position.y);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	

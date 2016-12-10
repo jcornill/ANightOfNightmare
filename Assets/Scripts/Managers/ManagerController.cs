@@ -8,9 +8,9 @@ public class ManagerController {
 	private static ManagerController _instance;
 	public static ManagerController Instance {
 		get {
-			if (Instance == null) {
+			if (_instance == null) {
 				_instance = new ManagerController ();
-				_instance.InitManagers ();
+				_instance.eventManager = new EventManager ();
 			}
 			return _instance;
 		}
@@ -18,9 +18,10 @@ public class ManagerController {
 
 	public World world { get; private set; }
 
-	private void InitManagers()
+	public void InitManagers()
 	{
-		eventManager = new EventManager ();
+		world = GameObject.Find ("World").GetComponent<World> ();
+		world.TestCreatingWorld ();
 		eventManager.NotifyObservers (EventManager.EVENT_MANAGER_INIT, null);
 	}
 		

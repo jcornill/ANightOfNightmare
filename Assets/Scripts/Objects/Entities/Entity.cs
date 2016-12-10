@@ -9,7 +9,7 @@ public class Entity : RoomObject {
 	public void MoveUp()
 	{
 		if (orientation == Constants.ORIENTATION_UP) {
-			//Do Move Action
+			Move (orientation);
 		} else {
 			orientation = Constants.ORIENTATION_UP;
 		}
@@ -20,7 +20,7 @@ public class Entity : RoomObject {
 	public void MoveRight()
 	{
 		if (orientation == Constants.ORIENTATION_RIGHT) {
-			//Do Move Action
+			Move (orientation);
 		} else {
 			orientation = Constants.ORIENTATION_RIGHT;
 		}
@@ -31,7 +31,7 @@ public class Entity : RoomObject {
 	public void MoveBottom()
 	{
 		if (orientation == Constants.ORIENTATION_BOTTOM) {
-			//Do Move Action
+			Move (orientation);
 		} else {
 			orientation = Constants.ORIENTATION_BOTTOM;
 		}
@@ -42,11 +42,43 @@ public class Entity : RoomObject {
 	public void MoveLeft()
 	{
 		if (orientation == Constants.ORIENTATION_LEFT) {
-			//Do Move Action
+			Move (orientation);
 		} else {
 			orientation = Constants.ORIENTATION_LEFT;
 		}
 		UpdateRotation ();
+	}
+
+	// Move to a direction
+	private void Move(int pDir)
+	{
+		Tile vDestTile = null;
+		if (pDir == Constants.ORIENTATION_UP)
+			vDestTile = _refWorld.GetTile (tile.pos.x, tile.pos.y + 1); 
+		else if (pDir == Constants.ORIENTATION_RIGHT)
+			vDestTile = _refWorld.GetTile (tile.pos.x + 1, tile.pos.y);
+		else if (pDir == Constants.ORIENTATION_BOTTOM)
+			vDestTile = _refWorld.GetTile (tile.pos.x, tile.pos.y - 1); 
+		else if (pDir == Constants.ORIENTATION_LEFT)
+			vDestTile = _refWorld.GetTile (tile.pos.x - 1, tile.pos.y); 
+		else 
+			Debug.LogWarning("Entity.Move("+pDir+") => Unknow dir");
+		if (CheckTile (vDestTile)) {
+			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_PLAYER_MOVE, new ArgType<Tile> (vDestTile));
+			tile = vDestTile;
+			transform.position = tile.transform.position;
+		}
+	}
+
+	/** 
+	 * Check if a entity can move to this tile
+	 * Return true if the entity can go to this tile, false either
+	 */
+	private bool CheckTile(Tile pTile)
+	{
+		if (pTile != null && !pTile.isWall)
+			return true;
+		return false;
 	}
 
 	// Update visually the player rotation

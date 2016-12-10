@@ -12,8 +12,16 @@ public class World : MonoBehaviour {
 	public bool createNewWorld;
 	private Tile[,] tiles;
 
-	// Use this for initialization
-	void Start () {
+	void Start()
+	{
+		ManagerController.Instance.InitManagers ();
+	}
+
+	/**
+	 * 	Try to create the world depending of the bool set in the inspector
+	 * 	Function call by the ManagerController
+	 */
+	public void TestCreatingWorld () {
 		if (createNewWorld)
 			CreateWorld ();
 		else
@@ -26,7 +34,7 @@ public class World : MonoBehaviour {
 		for (int i = 0; i < transform.childCount; i++) {
 			Transform vChild = transform.GetChild(i);
 			Tile vTile = vChild.GetComponent<Tile> ();
-			tiles [(int)vTile.pos.x, (int)vTile.pos.y] = vTile;
+			tiles [(int)vTile.transform.position.x, (int)vTile.transform.position.y] = vTile;
 		}
 	}
 
@@ -42,12 +50,14 @@ public class World : MonoBehaviour {
 		}
 	}
 
-	public Tile GeTtile(int pX, int pY)
+	public Tile GetTile(float pX, float pY)
 	{
-		if (pX >= worldWith || pY >= worldWith || pX < 0 || pY < 0) {
-			Debug.LogWarning ("World.GeTtile ("+pX+","+pY+") => Tile out of the world. Returning null");
+		int vX = (int)pX;
+		int vY = (int)pY;
+		if (vX >= worldWith || vY >= worldWith || vX < 0 || vY < 0) {
+			Debug.LogWarning ("World.GeTtile ("+vX+","+vY+") => Tile out of the world. Returning null");
 			return null;
 		}
-		return tiles [pX, pY];
+		return tiles [vX, vY];
 	}
 }
