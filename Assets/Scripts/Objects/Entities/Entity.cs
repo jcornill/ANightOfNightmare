@@ -73,8 +73,9 @@ public class Entity : RoomObject {
 	/** 
 	 * Check if a entity can move to this tile
 	 * Return true if the entity can go to this tile, false either
+	 * This function is use for attack and speak
 	 */
-	private bool CheckTile(Tile pTile)
+	public virtual bool CheckTile(Tile pTile)
 	{
 		if (pTile != null && !pTile.isWall && !pTile.isShadow)
 			return true;
@@ -89,6 +90,8 @@ public class Entity : RoomObject {
 
 	public void TakeDamage(float pDamage)
 	{
+		if (maximumLife == -1)
+			return;
 		currentLife -= pDamage;
 		if (currentLife <= 0) {
 			currentLife = 0;

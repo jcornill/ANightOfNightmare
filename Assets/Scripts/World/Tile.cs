@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour {
 	public string spriteSheet;
 
 	// Bool if the tile is in the shadow
-	public bool isShadow;// {get; private set;}
+	public bool isShadow;// {get; set;}
 
 	// Script attached to the shadow
 	public ShadowFadeAnim shadowAnim;
@@ -20,6 +20,8 @@ public class Tile : MonoBehaviour {
 	public bool isWall;// {get; private set;}
 
 	public Vector2 pos;
+
+	public RoomObject objet;// { get; set;}
 
 	private SpriteRenderer _spriteRenderer;
 

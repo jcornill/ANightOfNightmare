@@ -56,7 +56,7 @@ public class World : MonoBehaviour {
 			ExpandRoom ();
 	}
 
-	private void ExpandRoom()
+	public void ExpandRoom()
 	{
 		foreach (Tile vTile in tiles) {
 			if (vTile.isShadow)
