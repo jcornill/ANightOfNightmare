@@ -66,7 +66,7 @@ public class Entity : RoomObject {
 		if (CheckTile (vDestTile)) {
 			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_PLAYER_MOVE, new ArgType<Tile> (vDestTile));
 			tile = vDestTile;
-			transform.position = tile.transform.position;
+			transform.parent.position = tile.transform.position;
 		}
 	}
 
