@@ -42,7 +42,7 @@ public class World : MonoBehaviour {
 		}
 	}
 
-	public void GeTtile(int pX, int pY)
+	public Tile GeTtile(int pX, int pY)
 	{
 		if (pX >= worldWith || pY >= worldWith || pX < 0 || pY < 0) {
 			Debug.LogWarning ("World.GeTtile ("+pX+","+pY+") => Tile out of the world. Returning null");
