@@ -9,6 +9,8 @@ public class Player : Entity {
 			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_HIDE_DIALOG, null);
 			return true;
 		}
+		if (pTile == null || pTile.isShadow)
+			return false;
 		if (pTile.objet != null)
 			DoAction (pTile.objet);
 		return false;
