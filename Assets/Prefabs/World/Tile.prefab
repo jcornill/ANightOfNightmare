@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alpha: 0.75
+  tile: {fileID: 0}
 --- !u!114 &114000010313746102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,12 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693a91f309a10734caa16ba56bc32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: Flowers
+  spriteSheet: Stones
   isShadow: 0
   shadowAnim: {fileID: 0}
   isBorder: 0
   isWall: 0
   pos: {x: 0, y: 0}
+  objet: {fileID: 0}
 --- !u!212 &212000011387491120
 SpriteRenderer:
   m_ObjectHideFlags: 1
