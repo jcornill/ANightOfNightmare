@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
-	// The sprite component of the tile
-	public Sprite sprite;// {get; private set;}
+	//The string for the spriteSheet of the tile
+	public string spriteSheet;
 
 	// Bool if the tile is in the shadow
 	public bool isShadow;// {get; private set;}
@@ -17,9 +17,20 @@ public class Tile : MonoBehaviour {
 
 	public Vector2 pos;
 
+	private SpriteRenderer _spriteRenderer;
+
 	// Use this for initialization
 	void Awake () {
 		pos = new Vector2 (transform.position.x, transform.position.y);
+		_spriteRenderer = GetComponent<SpriteRenderer> ();
+		Sprite[] vSprites = Resources.LoadAll <Sprite>(Constants.PATH_TILE_SPRITE_SHEET + spriteSheet);
+		int vRng = Random.Range (0, vSprites.Length);
+		ChangeSprite (vSprites [vRng]);
+	}
+
+	private void ChangeSprite(Sprite pSprite)
+	{
+		_spriteRenderer.sprite = pSprite;
 	}
 
 	// Update is called once per frame

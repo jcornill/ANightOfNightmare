@@ -52,6 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693a91f309a10734caa16ba56bc32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteSheet: Flowers
+  isShadow: 0
+  isBorder: 0
+  isWall: 0
+  pos: {x: 0, y: 0}
 --- !u!212 &212000012492284028
 SpriteRenderer:
   m_ObjectHideFlags: 1
