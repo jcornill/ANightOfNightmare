@@ -6,6 +6,7 @@ public class ShadowFadeAnim : MonoBehaviour {
 	public float alpha;
 	private SpriteRenderer _spriteRenderer;
 	private Animation _animation;
+	public Tile tile;
 
 	void Awake()
 	{
@@ -18,8 +19,10 @@ public class ShadowFadeAnim : MonoBehaviour {
 		Color vColor = _spriteRenderer.color;
 		vColor.a = alpha;
 		_spriteRenderer.color = vColor;
-		if (alpha == 0)
+		if (alpha == 0) {
 			setSate (false);
+			tile.isShadow = false;
+		}
 	}
 
 	public void setSate(bool pPositive)

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Tile : MonoBehaviour {
 
@@ -31,6 +32,7 @@ public class Tile : MonoBehaviour {
 		ChangeSprite (vSprites [vRng]);
 		shadowAnim = GetComponentInChildren<ShadowFadeAnim> ();
 		isShadow = true;
+		shadowAnim.tile = this;
 	}
 
 	void Start()
@@ -56,9 +58,28 @@ public class Tile : MonoBehaviour {
 		_spriteRenderer.sprite = pSprite;
 	}
 
+	public Tile[] GetAdjacentShadowTiles()
+	{
+		List<Tile> vTilesList = new List<Tile> ();
+		World vWorld = ManagerController.Instance.world;
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				if (i == 0 && j == 0)
+					continue;
+				Tile vTile = vWorld.GetTile (pos.x + i, pos.y + j);
+				if (vTile == null) {
+					Debug.LogWarning ("Tile.GetAdjacentShadowTiles() => Trying to expand above the map limit, returning null.");
+					return null;
+				}
+				if (vTile.isShadow)
+					vTilesList.Add (vTile);
+			}
+		}
+		return (vTilesList.ToArray ());
+	}
+
 	public void FreeShadowTile()
 	{
 		shadowAnim.playAnim ();
-		isShadow = false;
 	}
 }

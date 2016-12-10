@@ -50,6 +50,23 @@ public class World : MonoBehaviour {
 		}
 	}
 
+	void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.P))
+			ExpandRoom ();
+	}
+
+	private void ExpandRoom()
+	{
+		foreach (Tile vTile in tiles) {
+			if (vTile.isShadow)
+				continue;
+			foreach (Tile vTileShadow in vTile.GetAdjacentShadowTiles()) {
+				vTileShadow.FreeShadowTile();
+			}
+		}
+	}
+
 	public Tile GetTile(float pX, float pY)
 	{
 		int vX = (int)pX;
