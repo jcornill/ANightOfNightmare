@@ -5,6 +5,7 @@ public class QuestsDetector : MonoBehaviour, IObserver {
 
 	public string[] questInfo;
 	public string[] eventComplete;
+	public string[] eventArgs;
 
 	public int missionIndex;
 	private EventManager _refEventManger;
@@ -24,7 +25,12 @@ public class QuestsDetector : MonoBehaviour, IObserver {
 
 	public void PlayEvent(string pEvent, Arg pArg)
 	{
-		if (eventComplete [missionIndex] == pEvent) {
+		string vArgString = "";
+		if (pArg != null) {
+			if (pArg is ArgType<string>)
+				vArgString = ((ArgType<string>)pArg).value;
+		}
+		if (eventComplete [missionIndex] == pEvent && eventArgs[missionIndex] == vArgString) {
 			_refEventManger.RemoveObserver (this, pEvent);
 			ManagerController.Instance.world.ExpandRoom ();
 			missionIndex++;

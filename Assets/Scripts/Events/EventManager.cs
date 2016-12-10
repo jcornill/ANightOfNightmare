@@ -20,6 +20,9 @@ using UnityEngine;
 	{
 		public const string EVENT_MANAGER_INIT = "EventManagerInit";
 		public const string EVENT_PLAYER_MOVE = "EventPlayerMove";
+		public const string EVENT_SHOW_DIALOG = "EventShowDialog";
+		public const string EVENT_HIDE_DIALOG = "EventHideDialog";
+		public const string EVENT_DIALOG_HIDDEN = "EventDialogHidden";
 
 		public Dictionary<string, List<IObserver>> eventMap { get; private set; }
 
