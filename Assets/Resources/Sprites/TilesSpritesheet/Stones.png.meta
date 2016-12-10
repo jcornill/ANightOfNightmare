@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 8719d98c9484d7a48991a745e0f7086c
-timeCreated: 1481396919
+timeCreated: 1481403682
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: TileStoneBrick-01_0
+    21300002: Stones_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,13 +55,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileStoneBrick-01_0
+      name: Stones_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 534
-        height: 534
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
