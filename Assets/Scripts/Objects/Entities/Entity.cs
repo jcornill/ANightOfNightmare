@@ -65,7 +65,9 @@ public class Entity : RoomObject {
 			Debug.LogWarning("Entity.Move("+pDir+") => Unknow dir");
 		if (CheckTile (vDestTile)) {
 			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_PLAYER_MOVE, new ArgType<Tile> (vDestTile));
+			tile.objet = null;
 			tile = vDestTile;
+			tile.objet = this;
 			transform.parent.position = tile.transform.position;
 		}
 	}
@@ -100,4 +102,21 @@ public class Entity : RoomObject {
 	}
 
 	public virtual void Death() {}
+
+	/**
+	 * Face the orientation of the object depending of the orientation given
+	 * usefull when the player speak to a npc
+	 */
+	public void FaceOrientation(int pOrientation)
+	{
+		if (pOrientation == Constants.ORIENTATION_UP)
+			orientation = Constants.ORIENTATION_BOTTOM;
+		else if (pOrientation == Constants.ORIENTATION_LEFT)
+			orientation = Constants.ORIENTATION_RIGHT;
+		else if (pOrientation == Constants.ORIENTATION_BOTTOM)
+			orientation = Constants.ORIENTATION_UP;
+		else if (pOrientation == Constants.ORIENTATION_RIGHT)
+			orientation = Constants.ORIENTATION_LEFT;
+		UpdateRotation ();
+	}
 }

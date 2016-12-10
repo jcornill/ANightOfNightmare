@@ -19,10 +19,7 @@ public class RoomObject : MonoBehaviour, IObserver
 	{
 		_refWorld = ManagerController.Instance.world;
 		tile = _refWorld.GetTile (transform.position.x, transform.position.y);
+		tile.objet = this;
 	}
-
-	void Update()
-	{
-
-	}
+		
 }
