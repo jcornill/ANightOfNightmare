@@ -24,6 +24,7 @@ using UnityEngine;
 		public const string EVENT_HIDE_DIALOG = "EventHideDialog";
 		public const string EVENT_DIALOG_HIDDEN = "EventDialogHidden";
 		public const string EVENT_ACTION_DONE = "EventActionDone";
+		public const string EVENT_MOB_DEATH = "EventMobDeath";
 
 		public Dictionary<string, List<IObserver>> eventMap { get; private set; }
 

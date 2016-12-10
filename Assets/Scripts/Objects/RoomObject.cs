@@ -22,9 +22,11 @@ public class RoomObject : MonoBehaviour, IObserver
 
 	public virtual void PlayEvent(string pEvent, Arg pArg)
 	{
-		_refWorld = ManagerController.Instance.world;
-		tile = _refWorld.GetTile (transform.position.x, transform.position.y);
-		tile.objet = this;
+		if (pEvent == EventManager.EVENT_MANAGER_INIT) {
+			_refWorld = ManagerController.Instance.world;
+			tile = _refWorld.GetTile (transform.position.x, transform.position.y);
+			tile.objet = this;
+		}
 	}
 		
 }

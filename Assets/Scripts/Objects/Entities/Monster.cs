@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Monster : Entity, IObserver {
 	public Entity target { get; set; }
+	public int MobId;
 
 	public override void Init ()
 	{
@@ -24,6 +25,13 @@ public class Monster : Entity, IObserver {
 	{
 		base.PlayEvent (pEvent, pArg);
 		ProcessAction ();
+	}
+
+	public override void Death ()
+	{
+		ManagerController.Instance.eventManager.RemoveObserver (this, EventManager.EVENT_ACTION_DONE);
+		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_MOB_DEATH, new ArgType<string> (MobId.ToString ()));
+		base.Death ();
 	}
 
 }

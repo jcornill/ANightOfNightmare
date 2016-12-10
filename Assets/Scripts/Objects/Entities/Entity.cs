@@ -105,6 +105,7 @@ public class Entity : RoomObject {
 	}
 
 	public virtual void Death() {
+		tile.objet = null;
 		GameObject.Destroy (gameObject);
 	}
 
