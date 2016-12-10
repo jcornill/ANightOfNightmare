@@ -4,6 +4,7 @@ using System.Collections;
 public class Entity : RoomObject {
 	public float currentLife;
 	public float maximumLife;
+	public float damage;
 
 	// Rotate the player if don't face the good direction else move the player
 	public void MoveUp()
@@ -92,6 +93,8 @@ public class Entity : RoomObject {
 
 	public void TakeDamage(float pDamage)
 	{
+		Debug.Log (this + " take damage: " + pDamage);
+
 		if (maximumLife == -1)
 			return;
 		currentLife -= pDamage;
@@ -101,7 +104,9 @@ public class Entity : RoomObject {
 		}
 	}
 
-	public virtual void Death() {}
+	public virtual void Death() {
+		GameObject.Destroy (gameObject);
+	}
 
 	/**
 	 * Face the orientation of the object depending of the orientation given
@@ -118,5 +123,45 @@ public class Entity : RoomObject {
 		else if (pOrientation == Constants.ORIENTATION_RIGHT)
 			orientation = Constants.ORIENTATION_LEFT;
 		UpdateRotation ();
+	}
+
+	/**
+	 * Reverse the rotation given in parameter
+	 */
+	public int ReverseOrientation(int pOrientation)
+	{
+		if (pOrientation == Constants.ORIENTATION_UP)
+			return Constants.ORIENTATION_BOTTOM;
+		else if (pOrientation == Constants.ORIENTATION_LEFT)
+			return Constants.ORIENTATION_RIGHT;
+		else if (pOrientation == Constants.ORIENTATION_BOTTOM)
+			return Constants.ORIENTATION_UP;
+		else if (pOrientation == Constants.ORIENTATION_RIGHT)
+			return Constants.ORIENTATION_LEFT;
+		return -1;
+	}
+
+	public int DistanceFrom(Entity pEntity)
+	{
+		int distance = 0;
+		distance += (int)Mathf.Abs (pEntity.tile.pos.x - tile.pos.x);
+		distance += (int)Mathf.Abs (pEntity.tile.pos.y - tile.pos.y);
+		return distance;
+	}
+
+	public void MoveTo(Entity pEntity)
+	{
+		int x1 = (int)tile.pos.x;
+		int x2 = (int)pEntity.tile.pos.x;
+		int y1 = (int)tile.pos.y;
+		int y2 = (int)pEntity.tile.pos.y;
+		if (x1 > x2)
+			MoveLeft ();
+		else if (x1 < x2)
+			MoveRight ();
+		else if (y1 > y2)
+			MoveBottom ();
+		else if (y1 < y2)
+			MoveUp ();
 	}
 }

@@ -23,6 +23,7 @@ using UnityEngine;
 		public const string EVENT_SHOW_DIALOG = "EventShowDialog";
 		public const string EVENT_HIDE_DIALOG = "EventHideDialog";
 		public const string EVENT_DIALOG_HIDDEN = "EventDialogHidden";
+		public const string EVENT_ACTION_DONE = "EventActionDone";
 
 		public Dictionary<string, List<IObserver>> eventMap { get; private set; }
 

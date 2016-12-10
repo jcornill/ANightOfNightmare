@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : Entity {
 	public override bool CheckTile (Tile pTile)
 	{
+		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_ACTION_DONE, null);
 		if (pTile != null && !pTile.isWall && !pTile.isShadow && pTile.objet == null) {
 			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_HIDE_DIALOG, null);
 			return true;
@@ -19,6 +20,11 @@ public class Player : Entity {
 			Npc vNpc = (Npc)pObject;
 			vNpc.FaceOrientation (orientation);
 			vNpc.ShowDialog ();
+		} else if (pObject is Monster) {
+			Monster vMonster = (Monster)pObject;
+			vMonster.TakeDamage (damage);
+			vMonster.FaceOrientation (orientation);
+			vMonster.target = this;
 		}
 
 	}
