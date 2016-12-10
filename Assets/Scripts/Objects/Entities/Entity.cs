@@ -76,7 +76,7 @@ public class Entity : RoomObject {
 	 */
 	private bool CheckTile(Tile pTile)
 	{
-		if (pTile != null && !pTile.isWall)
+		if (pTile != null && !pTile.isWall && !pTile.isShadow)
 			return true;
 		return false;
 	}

@@ -9,6 +9,9 @@ public class Tile : MonoBehaviour {
 	// Bool if the tile is in the shadow
 	public bool isShadow;// {get; private set;}
 
+	// Script attached to the shadow
+	public ShadowFadeAnim shadowAnim;
+
 	// Bool if the tile is a border
 	public bool isBorder;// {get; private set;}
 
@@ -26,6 +29,26 @@ public class Tile : MonoBehaviour {
 		Sprite[] vSprites = Resources.LoadAll <Sprite>(Constants.PATH_TILE_SPRITE_SHEET + spriteSheet);
 		int vRng = Random.Range (0, vSprites.Length);
 		ChangeSprite (vSprites [vRng]);
+		shadowAnim = GetComponentInChildren<ShadowFadeAnim> ();
+		isShadow = true;
+	}
+
+	void Start()
+	{
+		FreeShadowStartingTile ();
+	}
+
+	private void FreeShadowStartingTile()
+	{
+		if (pos.x == 12 && pos.y == 13) {
+			FreeShadowTile ();
+		} else if (pos.x == 12 && pos.y == 12) {
+			FreeShadowTile ();
+		} else if (pos.x == 13 && pos.y == 12) {
+			FreeShadowTile ();
+		} else if (pos.x == 13 && pos.y == 13) {
+			FreeShadowTile ();
+		}
 	}
 
 	private void ChangeSprite(Sprite pSprite)
@@ -33,8 +56,9 @@ public class Tile : MonoBehaviour {
 		_spriteRenderer.sprite = pSprite;
 	}
 
-	// Update is called once per frame
-	void Update () {
-	
+	public void FreeShadowTile()
+	{
+		shadowAnim.playAnim ();
+		isShadow = false;
 	}
 }
