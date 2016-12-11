@@ -44,10 +44,10 @@ TagManager:
   - name: Terrain
     uniqueID: 940498243
     locked: 0
-  - name: Objects
+  - name: Object
     uniqueID: 2931583341
     locked: 0
-  - name: Shadows
+  - name: Shadow
     uniqueID: 848069025
     locked: 0
   - name: UI

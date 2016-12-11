@@ -304,6 +304,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212000011387491120, guid: b239e845c5d3f2b44bd0cf7404be48d5,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 940498243
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b239e845c5d3f2b44bd0cf7404be48d5, type: 2}
   m_IsPrefabParent: 0
@@ -339,7 +344,8 @@ MonoBehaviour:
   currentLife: 100
   maximumLife: 100
   damage: 2
-  SpriteList: []
+  SpriteList:
+  - {fileID: 21300000, guid: 4ef194194fb48d848b9d22199effeb00, type: 3}
 --- !u!212 &418016531
 SpriteRenderer:
   m_ObjectHideFlags: 0
