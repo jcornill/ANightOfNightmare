@@ -6,7 +6,8 @@ public class DeathCode : MonoBehaviour, IObserver {
 
 	private Animation _animation;
 	public float alpha;
-	private bool start;
+	public bool start;
+	public bool life;
 	private Image img;
 	private Text text;
 
@@ -15,7 +16,12 @@ public class DeathCode : MonoBehaviour, IObserver {
 		_animation = GetComponent<Animation> ();
 		img = GetComponent<Image> ();
 		text = GetComponentInChildren<Text> ();
-		ManagerController.Instance.eventManager.AddObserver (this, EventManager.EVENT_PLAYER_DEATH);
+		if (life) {
+			start = true;
+			_animation.Play ("Life");
+		} else {
+			ManagerController.Instance.eventManager.AddObserver (this, EventManager.EVENT_PLAYER_DEATH);
+		}
 	}
 
 	void Update()
