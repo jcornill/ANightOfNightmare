@@ -13,6 +13,7 @@ public class World : MonoBehaviour {
 	public Transform monsterPrefab;
 	public bool createNewWorld;
 	private Tile[,] tiles;
+	public Npc oldNpc;
 
 	void Start()
 	{
@@ -127,6 +128,16 @@ public class World : MonoBehaviour {
 			pMonster.maximumLife = 20f;
 			pMonster.damage = 3f;
 			pMonster.armor = 1f;
+		}
+		else if (pIdMob == Constants.MONSTER_EYE)
+		{
+			//Life 150
+			//Damage 10
+			//Armor 3
+			pMonster.currentLife = 150f;
+			pMonster.maximumLife = 150f;
+			pMonster.damage = 10f;
+			pMonster.armor = 3f;
 		}
 		return (pMonster);
 	}

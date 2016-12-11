@@ -25,6 +25,12 @@ public class Player : Entity {
 		healthBar.fillAmount = (currentLife / maximumLife);
 	}
 
+	public override void Death ()
+	{
+		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_PLAYER_DEATH, null);
+		base.Death ();
+	}
+
 	public override bool CheckTile (Tile pTile)
 	{
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_ACTION_DONE, null);
@@ -43,6 +49,7 @@ public class Player : Entity {
 	{
 		if (pObject is Npc) {
 			Npc vNpc = (Npc)pObject;
+			vNpc.playerInterract = true;
 			vNpc.FaceOrientation (orientation);
 			vNpc.ShowDialog ();
 		} else if (pObject is Monster) {

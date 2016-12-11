@@ -26,6 +26,7 @@ using UnityEngine;
 		public const string EVENT_ACTION_DONE = "EventActionDone";
 		public const string EVENT_MOB_DEATH = "EventMobDeath";
 		public const string EVENT_UPDATE_DIALOG = "EventUpdateDialog";
+		public const string EVENT_PLAYER_DEATH = "EventPlayerDeath";
 
 		public Dictionary<string, List<IObserver>> eventMap { get; private set; }
 
