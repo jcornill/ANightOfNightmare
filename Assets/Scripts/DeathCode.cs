@@ -10,6 +10,9 @@ public class DeathCode : MonoBehaviour, IObserver {
 	public bool life;
 	private Image img;
 	private Text text;
+	public AudioClip endMusic;
+	public AudioSource music;
+	public AudioSource songDeath;
 
 	// Use this for initialization
 	void Start () {
@@ -40,5 +43,9 @@ public class DeathCode : MonoBehaviour, IObserver {
 	public void PlayEvent (string pEvent, Arg pArg) {
 		start = true;
 		_animation.Play ("Death");
+		music.clip = endMusic;
+		music.Play ();
+		music.volume = 0.42f;
+		songDeath.Play ();
 	}
 }
