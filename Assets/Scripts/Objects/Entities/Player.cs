@@ -3,6 +3,14 @@ using System.Collections;
 
 public class Player : Entity {
 
+	private Animation _animation;
+
+	public override void Init ()
+	{
+		base.Init ();
+		_animation = GetComponentInChildren<Animation> ();
+	}
+
 	public override bool CheckTile (Tile pTile)
 	{
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_ACTION_DONE, null);
@@ -25,6 +33,7 @@ public class Player : Entity {
 			vNpc.ShowDialog ();
 		} else if (pObject is Monster) {
 			Monster vMonster = (Monster)pObject;
+			_animation.Play ("PlayerAttack");
 			vMonster.TakeDamage (damage);
 			vMonster.FaceOrientation (orientation);
 			vMonster.target = this;
