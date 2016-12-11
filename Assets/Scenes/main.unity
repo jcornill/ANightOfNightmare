@@ -303,6 +303,7 @@ Animation:
   m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 7400000, guid: de1cc30ae3e62e34a86f02d5122326be, type: 2}
+  - {fileID: 7400000, guid: 340598426a7e69948a475f1bec80e8c6, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -792,16 +793,19 @@ MonoBehaviour:
   - Speak to the old NPC
   - Take care of the strange monster
   - Take the loot and speak again to the old NPC
+  - Open the chest and continue help the NPC
   eventComplete:
   - EventPlayerMove
   - EventDialogHidden
   - EventMobDeath
+  - EventDialogHidden
   - EventDialogHidden
   eventArgs:
   - 
   - 0
   - 0
   - 1
+  - 2
   questText: {fileID: 1375050754}
   missionIndex: 0
 --- !u!4 &929401001
@@ -1394,11 +1398,6 @@ Prefab:
     - target: {fileID: 4000013259603920, guid: e04b95bdc57bf7e41ac55424b3b0f83e, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012232607364, guid: e04b95bdc57bf7e41ac55424b3b0f83e,
-        type: 2}
-      propertyPath: lootId
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e04b95bdc57bf7e41ac55424b3b0f83e, type: 2}

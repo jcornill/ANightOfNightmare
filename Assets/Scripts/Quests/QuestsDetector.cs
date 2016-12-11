@@ -37,7 +37,6 @@ public class QuestsDetector : MonoBehaviour, IObserver {
 				vArgString = ((ArgType<string>)pArg).value;
 		}
 		if (eventComplete [missionIndex] == pEvent && eventArgs[missionIndex] == vArgString) {
-			//_refEventManger.RemoveObserver (this, pEvent);
 			ManagerController.Instance.world.ExpandRoom ();
 			missionIndex++;
 			UpdateText ();
