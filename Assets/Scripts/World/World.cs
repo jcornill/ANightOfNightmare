@@ -10,6 +10,7 @@ public class World : MonoBehaviour {
 
 	public Transform tilePrefab;
 	public Transform lootBagPrefab;
+	public Transform monsterPrefab;
 	public bool createNewWorld;
 	private Tile[,] tiles;
 
@@ -97,19 +98,35 @@ public class World : MonoBehaviour {
 		vLoot.ChangeSprite (vLoot.GetSpriteFromId (pIdSPrite));
 	}
 
-//	public void SpawnLoot(Tile pTile, int pIdMob)
-//	{
-//		Transform vTransform = (Transform)GameObject.Instantiate(lootBagPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
-//		vTransform.name = "Monster_" + pIdMob;
-//		Monster vMonster = vTransform.GetComponentInChildren<Monster> ();
-//		vMonster.tile = pTile;
-//		pTile.objet = vMonster;
-//		vMonster.world = this;
-//		vMonster.ChangeSprite (vMonster.GetSpriteFromId (pIdSPrite));
-//	}
-//
-//	public Monster UpdateMobInfo(Monster pMonster, int pIdMob){
-//
-//	}
+	public void SpawnMonster(Tile pTile, int pIdMob, Entity pTarget = null)
+	{
+		Transform vTransform = (Transform)GameObject.Instantiate(monsterPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
+		vTransform.name = "Monster_" + pIdMob;
+		Monster vMonster = vTransform.GetComponentInChildren<Monster> ();
+		vMonster.tile = pTile;
+		pTile.objet = vMonster;
+		vMonster.world = this;
+		vMonster = UpdateMobInfo (vMonster, pIdMob);
+		vMonster.target = pTarget;
+		vMonster.ChangeSprite (vMonster.GetSpriteFromId (pIdMob));
+	}
+
+	public Monster UpdateMobInfo(Monster pMonster, int pIdMob){
+		if (pIdMob == Constants.MONSTER_DARK) {
+			//Life 15
+			//Damage 2
+			//Armor 0
+		}
+		else if (pIdMob == Constants.MONSTER_BOOK) {
+			//Life 20
+			//Damage 3
+			//Armor 1
+			pMonster.currentLife = 20f;
+			pMonster.maximumLife = 20f;
+			pMonster.damage = 3f;
+			pMonster.armor = 1f;
+		}
+		return (pMonster);
+	}
 
 }

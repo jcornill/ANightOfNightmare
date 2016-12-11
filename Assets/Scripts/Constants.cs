@@ -12,4 +12,7 @@ public class Constants {
 	public const int SPRITE_PLAYER_PYJAMA = 0;
 	public const int SPRITE_PLAYER_KNIFE = 1;
 	public const int SPRITE_PLAYER_KNIFE_ARMOR = 2;
+	public const int MONSTER_DARK = 0;
+	public const int MONSTER_BOOK = 1;
+	public const int MONSTER_EYE = 2;
 }

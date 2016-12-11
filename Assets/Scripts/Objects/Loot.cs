@@ -13,6 +13,9 @@ public class Loot : RoomObject {
 		} else if (idLoot == "1") {
 			pEntity.AddArmor (2);
 			pEntity.ChangeSprite (pEntity.GetSpriteFromId (Constants.SPRITE_PLAYER_KNIFE_ARMOR));
+			world.SpawnMonster (world.GetTile (13f, 14f), Constants.MONSTER_BOOK, pEntity);
+			world.SpawnMonster (world.GetTile (11f, 14f), Constants.MONSTER_BOOK, pEntity);
+			world.SpawnMonster (world.GetTile (12f, 13f), Constants.MONSTER_BOOK, pEntity);
 		}
 		Death ();
 	}
