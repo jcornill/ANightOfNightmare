@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : Entity {
 
 	private Animation _animation;
+	public Image healthBar;
 
 	public override void Init ()
 	{
 		base.Init ();
 		_animation = GetComponentInChildren<Animation> ();
+	}
+
+	public override void TakeDamage (float pDamage)
+	{
+		base.TakeDamage (pDamage);
+		healthBar.fillAmount = (currentLife / maximumLife);
 	}
 
 	public override bool CheckTile (Tile pTile)

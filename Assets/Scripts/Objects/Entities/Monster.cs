@@ -40,6 +40,8 @@ public class Monster : Entity, IObserver {
 	{
 		ManagerController.Instance.eventManager.RemoveObserver (this, EventManager.EVENT_ACTION_DONE);
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_MOB_DEATH, new ArgType<string> (MobId.ToString ()));
+		if (MobId == Constants.MONSTER_BOOK)
+			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_UPDATE_DIALOG, new ArgType<int> (2));
 		tile.objet = null;
 		if (lootId != -1)
 			world.SpawnLoot (tile, "0", lootId);

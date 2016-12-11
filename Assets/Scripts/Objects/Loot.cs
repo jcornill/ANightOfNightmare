@@ -9,7 +9,7 @@ public class Loot : RoomObject {
 		if (idLoot == "0") {
 			pEntity.AddDamage (3);
 			pEntity.ChangeSprite (pEntity.GetSpriteFromId (Constants.SPRITE_PLAYER_KNIFE));
-			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_UPDATE_DIALOG, null);
+			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_UPDATE_DIALOG, new ArgType<int>(1));
 		} else if (idLoot == "1") {
 			pEntity.AddArmor (2);
 			pEntity.ChangeSprite (pEntity.GetSpriteFromId (Constants.SPRITE_PLAYER_KNIFE_ARMOR));

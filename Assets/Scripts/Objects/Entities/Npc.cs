@@ -19,7 +19,8 @@ public class Npc : Entity {
 	public override void PlayEvent (string pEvent, Arg pArg)
 	{
 		if (pEvent == EventManager.EVENT_UPDATE_DIALOG) {
-			dialogToPrint++;
+			int vDialog = ((ArgType<int>)pArg).value;
+			dialogToPrint = vDialog;
 		} else {
 			base.PlayEvent (pEvent, pArg);
 		}
