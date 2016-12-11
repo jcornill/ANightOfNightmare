@@ -8,6 +8,7 @@ public class Player : Entity {
 	public Image healthBar;
 	public AudioSource hit;
 	public AudioSource speak;
+	public AudioSource pickup;
 
 	public override void Init ()
 	{
@@ -64,6 +65,7 @@ public class Player : Entity {
 			vMonster.target = this;
 		} else if (pObject is Loot) {
 			Loot vLoot = (Loot)pObject;
+			pickup.Play ();
 			vLoot.TakeLoot (this);
 		}
 
