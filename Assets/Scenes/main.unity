@@ -248,13 +248,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HAHAHAHAHAHAAHAH
+  m_Text: You kill him ? Thank you, did you get the loot ? This sword is you reward.
 --- !u!222 &193844301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -339,6 +339,7 @@ MonoBehaviour:
   currentLife: 100
   maximumLife: 100
   damage: 2
+  SpriteList: []
 --- !u!212 &418016531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -729,16 +730,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questInfo:
   - Move with "WASD" or arrow key
-  - Speak to the old Npc
+  - Speak to the old NPC
   - Take care of the strange monster
+  - Take the loot and speak again to the old NPC
   eventComplete:
   - EventPlayerMove
   - EventDialogHidden
   - EventMobDeath
+  - EventDialogHidden
   eventArgs:
   - 
   - 0
   - 0
+  - 1
   questText: {fileID: 1375050754}
   missionIndex: 0
 --- !u!4 &929401001
@@ -941,7 +945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogContainer:
   - {fileID: 653630481}
-  - {fileID: 0}
+  - {fileID: 2033776451}
 --- !u!1 &1206345320
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +976,8 @@ MonoBehaviour:
   worldWith: 26
   worldHeight: 26
   tilePrefab: {fileID: 4000013213609552, guid: b239e845c5d3f2b44bd0cf7404be48d5, type: 2}
+  lootBagPrefab: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f,
+    type: 2}
   createNewWorld: 1
 --- !u!4 &1206345322
 Transform:
@@ -1429,7 +1435,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

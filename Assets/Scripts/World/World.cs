@@ -9,6 +9,7 @@ public class World : MonoBehaviour {
 	public int worldHeight;
 
 	public Transform tilePrefab;
+	public Transform lootBagPrefab;
 	public bool createNewWorld;
 	private Tile[,] tiles;
 
@@ -76,5 +77,16 @@ public class World : MonoBehaviour {
 			return null;
 		}
 		return tiles [vX, vY];
+	}
+
+	public void SpawnLoot(Tile pTile, string pIdLoot)
+	{
+		Transform vTransform = (Transform)GameObject.Instantiate(lootBagPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
+		vTransform.name = "LootBag_" + pIdLoot;
+		LootBag vLoot = vTransform.GetComponentInChildren<LootBag> ();
+		vLoot.tile = pTile;
+		vLoot.idLoot = pIdLoot;
+		pTile.objet = vLoot;
+
 	}
 }

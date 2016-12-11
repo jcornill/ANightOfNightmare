@@ -104,11 +104,6 @@ public class Entity : RoomObject {
 		}
 	}
 
-	public virtual void Death() {
-		tile.objet = null;
-		GameObject.Destroy (gameObject);
-	}
-
 	/**
 	 * Face the orientation of the object depending of the orientation given
 	 * usefull when the player speak to a npc
@@ -165,4 +160,10 @@ public class Entity : RoomObject {
 		else if (y1 < y2)
 			MoveUp ();
 	}
+
+	public void AddDamage(float pBonus)
+	{
+		damage += pBonus;
+	}
+
 }

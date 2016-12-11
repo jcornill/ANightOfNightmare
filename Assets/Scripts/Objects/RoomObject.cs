@@ -9,6 +9,7 @@ public class RoomObject : MonoBehaviour, IObserver
 	public Tile tile {get;set;}
 
 	protected World _refWorld;
+	private SpriteRenderer _refRenderer;
 
 	public void Awake()
 	{
@@ -24,9 +25,20 @@ public class RoomObject : MonoBehaviour, IObserver
 	{
 		if (pEvent == EventManager.EVENT_MANAGER_INIT) {
 			_refWorld = ManagerController.Instance.world;
+			_refRenderer = GetComponent<SpriteRenderer> ();
 			tile = _refWorld.GetTile (transform.position.x, transform.position.y);
 			tile.objet = this;
 		}
 	}
 		
+	public void ChangeSprite(Sprite pNewSprite)
+	{
+		_refRenderer.sprite = pNewSprite;
+	}
+
+	public virtual void Death() {
+		tile.objet = null;
+		GameObject.Destroy (gameObject);
+	}
+
 }

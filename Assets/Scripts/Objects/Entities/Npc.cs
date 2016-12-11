@@ -8,11 +8,21 @@ public class Npc : Entity {
 	{
 		base.Init ();
 		dialogToPrint = 0;
+		ManagerController.Instance.eventManager.AddObserver (this, EventManager.EVENT_UPDATE_DIALOG);
 	}
 
 	public void ShowDialog()
 	{
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_SHOW_DIALOG, new ArgType<string> (dialogToPrint.ToString()));
+	}
+
+	public override void PlayEvent (string pEvent, Arg pArg)
+	{
+		if (pEvent == EventManager.EVENT_UPDATE_DIALOG) {
+			dialogToPrint++;
+		} else {
+			base.PlayEvent (pEvent, pArg);
+		}
 	}
 
 }
