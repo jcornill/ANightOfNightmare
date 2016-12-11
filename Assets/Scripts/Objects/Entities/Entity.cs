@@ -174,7 +174,7 @@ public class Entity : RoomObject {
 		armor += pBonus;
 	}
 
-	public void RegenHealth(float pHeal)
+	public virtual void RegenHealth(float pHeal)
 	{
 		currentLife += pHeal;
 		if (currentLife > maximumLife)

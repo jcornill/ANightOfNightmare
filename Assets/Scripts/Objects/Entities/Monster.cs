@@ -44,7 +44,7 @@ public class Monster : Entity, IObserver {
 			ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_UPDATE_DIALOG, new ArgType<int> (2));
 		tile.objet = null;
 		if (lootId != -1)
-			world.SpawnLoot (tile, "0", lootId);
+			world.SpawnLoot (tile, lootId.ToString(), lootId);
 		GameObject.Destroy (gameObject);
 	}
 

@@ -9,6 +9,7 @@ public class Constants {
 	public const string PATH_TILE_SPRITE_SHEET = "Sprites/TilesSpritesheet/";
 	public const int SPRITE_LOOT_BAG = 0;
 	public const int SPRITE_LOOT_CHEST = 1;
+	public const int SPRITE_LOOT_APPLE = 2;
 	public const int SPRITE_PLAYER_PYJAMA = 0;
 	public const int SPRITE_PLAYER_KNIFE = 1;
 	public const int SPRITE_PLAYER_KNIFE_ARMOR = 2;

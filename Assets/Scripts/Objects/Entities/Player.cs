@@ -19,6 +19,12 @@ public class Player : Entity {
 		healthBar.fillAmount = (currentLife / maximumLife);
 	}
 
+	public override void RegenHealth (float pHeal)
+	{
+		base.RegenHealth (pHeal);
+		healthBar.fillAmount = (currentLife / maximumLife);
+	}
+
 	public override bool CheckTile (Tile pTile)
 	{
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_ACTION_DONE, null);
