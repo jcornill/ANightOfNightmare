@@ -5,11 +5,19 @@ public class Monster : Entity, IObserver {
 	public Entity target { get; set; }
 	public int MobId;
 	public int lootId;
+	private Animation _animation;
 
 	public override void Init ()
 	{
 		base.Init ();
 		ManagerController.Instance.eventManager.AddObserver (this, EventManager.EVENT_ACTION_DONE);
+		_animation = GetComponentInChildren<Animation> ();
+	}
+
+	public override void TakeDamage (float pDamage)
+	{
+		base.TakeDamage (pDamage);
+		_animation.Play ("DamageTaken");
 	}
 
 	private void ProcessAction()

@@ -92,7 +92,7 @@ public class Entity : RoomObject {
 		transform.localEulerAngles = new Vector3 (0, 0, orientation * -90f);
 	}
 
-	public void TakeDamage(float pDamage)
+	public virtual void TakeDamage(float pDamage)
 	{
 		if (maximumLife == -1)
 			return;
