@@ -4,6 +4,7 @@ using System.Collections;
 public class Monster : Entity, IObserver {
 	public Entity target { get; set; }
 	public int MobId;
+	public int lootId;
 
 	public override void Init ()
 	{
@@ -32,7 +33,8 @@ public class Monster : Entity, IObserver {
 		ManagerController.Instance.eventManager.RemoveObserver (this, EventManager.EVENT_ACTION_DONE);
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_MOB_DEATH, new ArgType<string> (MobId.ToString ()));
 		tile.objet = null;
-		world.SpawnLoot (tile, "0", Constants.SPRITE_LOOT_BAG);
+		if (lootId != -1)
+			world.SpawnLoot (tile, "0", lootId);
 		GameObject.Destroy (gameObject);
 	}
 

@@ -98,7 +98,7 @@ public class World : MonoBehaviour {
 		vLoot.ChangeSprite (vLoot.GetSpriteFromId (pIdSPrite));
 	}
 
-	public void SpawnMonster(Tile pTile, int pIdMob, Entity pTarget = null)
+	public void SpawnMonster(Tile pTile, int pIdMob, int pLootId = -1, Entity pTarget = null)
 	{
 		Transform vTransform = (Transform)GameObject.Instantiate(monsterPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
 		vTransform.name = "Monster_" + pIdMob;
@@ -108,6 +108,8 @@ public class World : MonoBehaviour {
 		vMonster.world = this;
 		vMonster = UpdateMobInfo (vMonster, pIdMob);
 		vMonster.target = pTarget;
+		vMonster.MobId = pIdMob;
+		vMonster.lootId = pLootId;
 		vMonster.ChangeSprite (vMonster.GetSpriteFromId (pIdMob));
 	}
 

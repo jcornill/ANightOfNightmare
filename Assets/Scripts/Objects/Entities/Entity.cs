@@ -81,7 +81,7 @@ public class Entity : RoomObject {
 	 */
 	public virtual bool CheckTile(Tile pTile)
 	{
-		if (pTile != null && !pTile.isWall && !pTile.isShadow)
+		if (pTile != null && !pTile.isWall && !pTile.isShadow && pTile.objet == null)
 			return true;
 		return false;
 	}
