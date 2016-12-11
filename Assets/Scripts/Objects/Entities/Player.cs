@@ -6,6 +6,8 @@ public class Player : Entity {
 
 	private Animation _animation;
 	public Image healthBar;
+	public AudioSource hit;
+	public AudioSource speak;
 
 	public override void Init ()
 	{
@@ -49,11 +51,13 @@ public class Player : Entity {
 	{
 		if (pObject is Npc) {
 			Npc vNpc = (Npc)pObject;
+			speak.Play ();
 			vNpc.playerInterract = true;
 			vNpc.FaceOrientation (orientation);
 			vNpc.ShowDialog ();
 		} else if (pObject is Monster) {
 			Monster vMonster = (Monster)pObject;
+			hit.Play ();
 			_animation.Play ("PlayerAttack");
 			vMonster.TakeDamage (damage);
 			vMonster.FaceOrientation (orientation);
