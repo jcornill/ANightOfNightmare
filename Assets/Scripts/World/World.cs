@@ -54,12 +54,6 @@ public class World : MonoBehaviour {
 		SpawnObjects ();
 	}
 
-	void Update()
-	{
-		if (Input.GetKeyDown (KeyCode.P))
-			ExpandRoom ();
-	}
-
 	public void ExpandRoom()
 	{
 		foreach (Tile vTile in tiles) {
