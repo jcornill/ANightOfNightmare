@@ -254,7 +254,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You kill him ? Thank you, did you get the loot ? This sword is you reward.
+  m_Text: You kill him ? Thank you, did you get the loot ? Keep this sword has a reward
+    and take the armor in the chest behind me.
 --- !u!222 &193844301
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013213609552, guid: b239e845c5d3f2b44bd0cf7404be48d5, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000012745323548, guid: b239e845c5d3f2b44bd0cf7404be48d5, type: 2}
       propertyPath: m_IsActive
@@ -341,11 +342,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: 0
+  world: {fileID: 0}
+  SpriteList:
+  - {fileID: 21300000, guid: 97c84cd5beb212f4cbb4c2c4f71f2ac3, type: 3}
+  - {fileID: 21300000, guid: 4ef194194fb48d848b9d22199effeb00, type: 3}
+  - {fileID: 21300000, guid: 8a168682769ba07448b33541c03cf668, type: 3}
   currentLife: 100
   maximumLife: 100
   damage: 2
-  SpriteList:
-  - {fileID: 21300000, guid: 4ef194194fb48d848b9d22199effeb00, type: 3}
+  armor: 0
 --- !u!212 &418016531
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -434,9 +439,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: 2
+  world: {fileID: 0}
+  SpriteList: []
   currentLife: -1
   maximumLife: -1
   damage: 0
+  armor: 0
 --- !u!212 &512746413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -663,7 +671,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &784683194
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +771,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1110532675
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,9 +814,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: 0
+  world: {fileID: 0}
+  SpriteList: []
   currentLife: 15
   maximumLife: 15
   damage: 2
+  armor: 0
   MobId: 0
 --- !u!212 &1110532678
 SpriteRenderer:
@@ -1287,7 +1298,7 @@ RectTransform:
   m_Children:
   - {fileID: 128348220}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1455,6 +1466,58 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1823670075}
+--- !u!1001 &1890975220
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014232961492, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010227944448, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011243906708, guid: 2927aa02dbc60b545a1a7e72c2feca0f,
+        type: 2}
+      propertyPath: SpriteList.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 316974decabf2c94e8f3bd49e452df31,
+        type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2927aa02dbc60b545a1a7e72c2feca0f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2033776451
 GameObject:
   m_ObjectHideFlags: 0

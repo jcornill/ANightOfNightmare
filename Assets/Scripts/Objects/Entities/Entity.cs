@@ -5,6 +5,7 @@ public class Entity : RoomObject {
 	public float currentLife;
 	public float maximumLife;
 	public float damage;
+	public float armor;
 
 	// Rotate the player if don't face the good direction else move the player
 	public void MoveUp()
@@ -55,13 +56,13 @@ public class Entity : RoomObject {
 	{
 		Tile vDestTile = null;
 		if (pDir == Constants.ORIENTATION_UP)
-			vDestTile = _refWorld.GetTile (tile.pos.x, tile.pos.y + 1); 
+			vDestTile = world.GetTile (tile.pos.x, tile.pos.y + 1); 
 		else if (pDir == Constants.ORIENTATION_RIGHT)
-			vDestTile = _refWorld.GetTile (tile.pos.x + 1, tile.pos.y);
+			vDestTile = world.GetTile (tile.pos.x + 1, tile.pos.y);
 		else if (pDir == Constants.ORIENTATION_BOTTOM)
-			vDestTile = _refWorld.GetTile (tile.pos.x, tile.pos.y - 1); 
+			vDestTile = world.GetTile (tile.pos.x, tile.pos.y - 1); 
 		else if (pDir == Constants.ORIENTATION_LEFT)
-			vDestTile = _refWorld.GetTile (tile.pos.x - 1, tile.pos.y); 
+			vDestTile = world.GetTile (tile.pos.x - 1, tile.pos.y); 
 		else 
 			Debug.LogWarning("Entity.Move("+pDir+") => Unknow dir");
 		if (CheckTile (vDestTile)) {
@@ -93,10 +94,12 @@ public class Entity : RoomObject {
 
 	public void TakeDamage(float pDamage)
 	{
-		Debug.Log (this + " take damage: " + pDamage);
-
 		if (maximumLife == -1)
 			return;
+		pDamage -= armor;
+		if (pDamage < 0)
+			pDamage = 0;
+		Debug.Log (this + " take damage: " + pDamage);
 		currentLife -= pDamage;
 		if (currentLife <= 0) {
 			currentLife = 0;
@@ -166,4 +169,8 @@ public class Entity : RoomObject {
 		damage += pBonus;
 	}
 
+	public void AddArmor(float pBonus)
+	{
+		armor += pBonus;
+	}
 }

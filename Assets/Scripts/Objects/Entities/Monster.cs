@@ -32,7 +32,7 @@ public class Monster : Entity, IObserver {
 		ManagerController.Instance.eventManager.RemoveObserver (this, EventManager.EVENT_ACTION_DONE);
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_MOB_DEATH, new ArgType<string> (MobId.ToString ()));
 		tile.objet = null;
-		_refWorld.SpawnLoot (tile, "0");
+		world.SpawnLoot (tile, "0", Constants.SPRITE_LOOT_BAG);
 		GameObject.Destroy (gameObject);
 	}
 

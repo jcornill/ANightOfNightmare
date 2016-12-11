@@ -8,8 +8,9 @@ public class RoomObject : MonoBehaviour, IObserver
 	// Tile where the objet is
 	public Tile tile {get;set;}
 
-	protected World _refWorld;
-	private SpriteRenderer _refRenderer;
+	public World world;
+	protected SpriteRenderer _refRenderer;
+	public Sprite[] SpriteList;
 
 	public void Awake()
 	{
@@ -19,21 +20,33 @@ public class RoomObject : MonoBehaviour, IObserver
 	public virtual void Init()
 	{
 		ManagerController.Instance.eventManager.AddObserver (this, EventManager.EVENT_MANAGER_INIT);
+		_refRenderer = GetComponentInChildren<SpriteRenderer> ();
 	}
 
 	public virtual void PlayEvent(string pEvent, Arg pArg)
 	{
 		if (pEvent == EventManager.EVENT_MANAGER_INIT) {
-			_refWorld = ManagerController.Instance.world;
-			_refRenderer = GetComponent<SpriteRenderer> ();
-			tile = _refWorld.GetTile (transform.position.x, transform.position.y);
+			world = ManagerController.Instance.world;
+			tile = world.GetTile (transform.position.x, transform.position.y);
 			tile.objet = this;
 		}
 	}
 		
 	public void ChangeSprite(Sprite pNewSprite)
 	{
-		_refRenderer.sprite = pNewSprite;
+		if (pNewSprite != null)
+			_refRenderer.sprite = pNewSprite;
+		else
+			Debug.LogWarning ("RoomObject.ChangeSprite(null) => The sprite is null, the spirte is not changed");
+	}
+
+	public Sprite GetSpriteFromId(int pId)
+	{
+		if (pId >= SpriteList.Length) {
+			Debug.LogWarning ("RoomObject.GetSpriteFromId(" + pId + ") => The room objet don't have this sprite id");
+			return null;
+		}
+		return (SpriteList [pId]);
 	}
 
 	public virtual void Death() {

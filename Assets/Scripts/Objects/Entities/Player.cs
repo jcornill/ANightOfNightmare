@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Player : Entity {
 
-	public Sprite[] SpriteList;
-
 	public override bool CheckTile (Tile pTile)
 	{
 		ManagerController.Instance.eventManager.NotifyObservers (EventManager.EVENT_ACTION_DONE, null);
@@ -30,10 +28,9 @@ public class Player : Entity {
 			vMonster.TakeDamage (damage);
 			vMonster.FaceOrientation (orientation);
 			vMonster.target = this;
-		} else if (pObject is LootBag) {
-			LootBag vLoot = (LootBag)pObject;
+		} else if (pObject is Loot) {
+			Loot vLoot = (Loot)pObject;
 			vLoot.TakeLoot (this);
-			ChangeSprite (SpriteList [0]);
 		}
 
 	}

@@ -49,6 +49,7 @@ public class World : MonoBehaviour {
 				tiles[i, j] = vTransform.GetComponent<Tile> ();
 			}
 		}
+		SpawnObjects ();
 	}
 
 	void Update()
@@ -79,14 +80,36 @@ public class World : MonoBehaviour {
 		return tiles [vX, vY];
 	}
 
-	public void SpawnLoot(Tile pTile, string pIdLoot)
+	private void SpawnObjects()
+	{
+		SpawnLoot (GetTile (12f, 17f), "1", 1);
+	}
+
+	public void SpawnLoot(Tile pTile, string pIdLoot, int pIdSPrite)
 	{
 		Transform vTransform = (Transform)GameObject.Instantiate(lootBagPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
 		vTransform.name = "LootBag_" + pIdLoot;
-		LootBag vLoot = vTransform.GetComponentInChildren<LootBag> ();
+		Loot vLoot = vTransform.GetComponentInChildren<Loot> ();
 		vLoot.tile = pTile;
 		vLoot.idLoot = pIdLoot;
 		pTile.objet = vLoot;
-
+		vLoot.world = this;
+		vLoot.ChangeSprite (vLoot.GetSpriteFromId (pIdSPrite));
 	}
+
+//	public void SpawnLoot(Tile pTile, int pIdMob)
+//	{
+//		Transform vTransform = (Transform)GameObject.Instantiate(lootBagPrefab, new Vector3(pTile.pos.x, pTile.pos.y, 0), Quaternion.identity, transform);
+//		vTransform.name = "Monster_" + pIdMob;
+//		Monster vMonster = vTransform.GetComponentInChildren<Monster> ();
+//		vMonster.tile = pTile;
+//		pTile.objet = vMonster;
+//		vMonster.world = this;
+//		vMonster.ChangeSprite (vMonster.GetSpriteFromId (pIdSPrite));
+//	}
+//
+//	public Monster UpdateMobInfo(Monster pMonster, int pIdMob){
+//
+//	}
+
 }
