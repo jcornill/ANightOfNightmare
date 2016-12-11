@@ -23,12 +23,16 @@ public class DeathCode : MonoBehaviour, IObserver {
 		if (start) {
 			Color vColor = img.color;
 			vColor.a = alpha;
-			text.color = vColor;
 			img.color = vColor;
+			vColor = text.color;
+			vColor.a = alpha;
+			text.color = vColor;
+
 		}
 	}
 
 	public void PlayEvent (string pEvent, Arg pArg) {
 		start = true;
+		_animation.Play ("Death");
 	}
 }

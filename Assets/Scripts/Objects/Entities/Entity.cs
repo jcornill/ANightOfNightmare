@@ -99,7 +99,6 @@ public class Entity : RoomObject {
 		pDamage -= armor;
 		if (pDamage < 0)
 			pDamage = 0;
-		Debug.Log (this + " take damage: " + pDamage);
 		currentLife -= pDamage;
 		if (currentLife <= 0) {
 			currentLife = 0;
