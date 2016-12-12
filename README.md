@@ -1,6 +1,6 @@
-# LudumDare37
+# A night of nightmare
 
-A Little project for the Ludum Dare 37 doing in C# and Unity with the theme "One Room"
+A little project for the Ludum Dare 37 doing in C#, Unity 5.4.1f1 and Illustrator with the theme "One Room"
 
 *********************************************************************************************
 
